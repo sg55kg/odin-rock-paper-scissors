@@ -1,0 +1,17 @@
+.page {
+    height: 100vh;
+    position: relative;
+    display: flex;
+}
+
+.header {
+    height: 50px;
+}
+
+h1 {
+    text-align: center;
+    font: 30px Roboto, arial, sans-serif;
+    background-color: darkcyan;
+    margin:0 0;
+    padding-top: 10px;
+}
