@@ -13,9 +13,9 @@
     <div id="game-panel">
         <h3>Make your choice</h3>
         <div class="user-choice">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock" onclick="getPlayerChoice('Rock')">Rock</button>
+        <button id="paper" onclick="getPlayerChoice('Paper')">Paper</button>
+        <button id="scissors" onclick="getPlayerChoice('Scissors')">Scissors</button>
         </div>
     </div>
     <div id="results">
@@ -25,13 +25,19 @@
                 <th>Computer Choice</th>
             </thead>
             <tbody>
-                <th id="showPlayerChoice">test</th>
-                <th id="showCompChoice">test</th>
+                <tr>
+                <th id="showPlayerChoice"></th>
+                <th id="showCompChoice"></th>
+                </tr>
+                <tr>
+                <th id="showPlayerScore"></th>
+                <th id="showCompScore"></th>
+                </tr>
             </tbody>
         </table>
-        <div id="scoreboard">
-
-        </div>
+    <div>
+        <h2 id="game-over"></h2>
+    </div>
     </div>
     <div id="footer">
 

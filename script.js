@@ -10,104 +10,105 @@ const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 let showPlayerChoice = document.getElementById('showPlayerChoice');
 let showCompChoice = document.getElementById('showCompChoice');
+let showPlayerScore = document.getElementById('showPlayerScore');
+let showCompScore = document.getElementById('showCompScore');
+let gameOver = document.getElementById('game-over');
 
 let playerChoice = '';
-let compChoice = '';
 let playerWinCount = 0;
 let compWinCount = 0;
-let roundNumber = 0;
+let compChoice;
 
-function game() {
-    round();
-    return;
-
+/*
+Player selects choice
+Computer generates choice
+Win count is updated (update count function?)
+If one of the counts reaches five, the game is over and scores are reset
+*/
+function getPlayerChoice(buttonChoice) {
+    playerChoice = buttonChoice;
+    game();
+    getCompChoice();
 }
 
-function getPlayerChoice() {
-    rock.addEventListener('click', function() {
-        playerChoice = 'Rock'
-        console.log(playerChoice);
-        getCompChoice();
-        compareChoices(playerChoice, compChoice);
-        roundNumber++
-        return roundNumber
-    })
-    paper.addEventListener('click', function() {
-        playerChoice = 'Paper'
-        console.log(playerChoice);
-        getCompChoice();
-        compareChoices(playerChoice, compChoice);
-        roundNumber++
-        return roundNumber
-    })
-    scissors.addEventListener('click', function() {
-        playerChoice = 'Scissors'
-        console.log(playerChoice);
-        getCompChoice();
-        compareChoices(playerChoice, compChoice);
-        roundNumber++
-        return roundNumber
-    })
-
-}
-
-function getCompChoice() {
+let getCompChoice = function() {
     let things = ['Rock', 'Paper', 'Scissors'];
     compChoice = things[Math.floor(Math.random()*things.length)];
-    console.log('c'+ compChoice) //just for debugging
     return compChoice;
 }
 
-function compareChoices(pChoice, cChoice) {
-    if(pChoice == 'Rock') {
-        if(cChoice == 'Paper') {
-            console.log('You lose')
+function updateWinCount(count) {
+    count += 1;
+    return count;
+}
+
+function compareChoices(pc, cc) {
+    if(pc == 'Rock') {
+
+        if(cc == 'Paper') {
             compWinCount++;
-            return compWinCount
-        } else if(cChoice == 'Rock') {
-            console.log('Tie')
-        } else if(cChoice == 'Scissors') {
-            console.log('You win')
+            showPlayerChoice.innerHTML = 'Rock';
+            showCompChoice.innerHTML = 'Paper';
+
+        } else if(cc == 'Rock') {
+            showPlayerChoice.innerHTML = 'Rock';
+            showCompChoice.innerHTML = 'Rock';
+
+        } else if(cc == 'Scissors') {
             playerWinCount++;
-            return playerWinCount
+            showPlayerChoice.innerHTML = 'Rock';
+            showCompChoice.innerHTML = 'Scissors';
         }
-    } else if(pChoice == 'Paper') {
-        if(cChoice == 'Paper') {
-            console.log('Tie')
-        } else if(cChoice == 'Rock') {
-            console.log('You win')
-            playerWinCount++
-            return playerWinCount
-        } else if(cChoice == 'Scissors') {
-            console.log('You lose')
-            compWinCount++
-            return compWinCount
+    } else if(pc == 'Paper') {
+
+        if(cc == 'Paper') {
+            showPlayerChoice.innerHTML = 'Paper';
+            showCompChoice.innerHTML = 'Paper';
+
+        } else if(cc == 'Rock') {     
+            playerWinCount++;
+            showPlayerChoice.innerHTML = 'Paper';
+            showCompChoice.innerHTML = 'Rock';
+
+        } else if(cc == 'Scissors') {
+            compWinCount++;
+            showPlayerChoice.innerHTML = 'Paper';
+            showCompChoice.innerHTML = 'Scissors';
         }
-    } else if(pChoice == 'Scissors') {
-        if(cChoice == 'Paper') {
-            console.log('You win')
-            playerWinCount++
-            return playerWinCount
-        } else if(cChoice == 'Rock') {
-            console.log('You lose')
-            compWinCount++
-            return compWinCount
-        } else if(cChoice == 'Scissors') {
-            console.log('Tie')
+    } else if(pc == 'Scissors') {
+
+        if(cc == 'Paper') {
+            playerWinCount++;
+            showPlayerChoice.innerHTML = 'Scissors';
+            showCompChoice.innerHTML = 'Paper';
+
+        } else if(cc == 'Rock') {
+            compWinCount++;
+            showPlayerChoice.innerHTML = 'Scissors';
+            showCompChoice.innerHTML = 'Rock';
+
+        } else if(cc == 'Scissors') {
+            showPlayerChoice.innerHTML = 'Scissors';
+            showCompChoice.innerHTML = 'Scissors';
         }
     } //eventually update this so score on screen is updated.
 }
 
-function endGame() {
-    console.log('Game Over')
+function game() {
+    compareChoices(playerChoice,compChoice);
+    showPlayerScore.innerHTML = `${playerWinCount}`;
+    showCompScore.innerHTML = `${compWinCount}`;
+    
+    if(playerWinCount == 5) {
+        gameOver.innerHTML = 'You won!'
+        playerWinCount = 0;
+        compWinCount = 0;
+    } else if(compWinCount == 5) {
+        gameOver.innerHTML = 'You lost lol'
+        playerWinCount = 0;
+        compWinCount = 0;
+    }
     
 }
 
-function round() {
-    while(roundNumber < 5) {
-        getPlayerChoice()
-    }
-    endGame()
-}
-
-game();
+getPlayerChoice();
