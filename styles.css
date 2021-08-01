@@ -1,17 +1,130 @@
 .page {
-    height: 100vh;
+    height: 100%;
     position: relative;
     display: flex;
 }
 
 .header {
-    height: 50px;
+    height: 100px;
 }
 
 h1 {
     text-align: center;
-    font: 30px Roboto, arial, sans-serif;
+    font: 60px 'Bebas Neue';
     background-color: darkcyan;
     margin:0 0;
-    padding-top: 10px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    text-emphasis: bold;
+}
+
+h3 {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    font: 20px 'Alfa Slab One'
+}
+
+#game-panel {
+    margin:auto;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+
+#rock {
+    margin: auto;
+    width: 60px;
+    padding-right: 50px;
+}
+
+#rock:hover {
+    width: 65px;
+}
+
+#paper {
+    margin: auto;
+    width: 60px;
+    padding-right: 50px;
+}
+
+#paper:hover {
+    width: 65px;
+}
+
+#scissors {
+    margin: auto;
+    width: 60px;
+}
+
+#scissors:hover {
+    width: 65px;
+}
+
+#results {
+    margin: auto;
+    width: 100%;
+  
+}
+
+#game-results {
+    margin: auto;
+    height: 200px;
+    padding: 50px;
+    width: 700px;
+    display: flexbox;
+}
+
+#ur-c {
+    font: 25px Roboto, arial, sans-serif;
+    padding-left: 40px;
+}
+
+#c-c {
+    font: 25px Roboto, arial, sans-serif;
+    padding-right: 40px;
+}
+
+#showPlayerChoice {
+    font: 30px 'Bebas Neue';
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+#showCompChoice {
+    font: 30px 'Bebas Neue';
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+#pScoreText {
+    font: 25px Roboto, arial, sans-serif;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+#cScoreText {
+    font: 25px Roboto, arial, sans-serif;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+#showPlayerScore {
+    padding-left: 45px;
+    font: 40px Roboto, arial, sans-serif;
+    padding-top: 20px;
+    color:cadetblue;
+}
+
+#showCompScore {
+    font: 40px Roboto, arial, sans-serif;
+    padding-right: 45px;
+    padding-top: 20px;
+    color:cadetblue;
+}
+
+#game-over {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font: 60px 'Alfa Slab One'
 }

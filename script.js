@@ -12,7 +12,7 @@ let showPlayerChoice = document.getElementById('showPlayerChoice');
 let showCompChoice = document.getElementById('showCompChoice');
 let showPlayerScore = document.getElementById('showPlayerScore');
 let showCompScore = document.getElementById('showCompScore');
-let gameOver = document.getElementById('game-over');
+let gameOver = document.getElementById('game-over-text');
 
 let playerChoice = '';
 let playerWinCount = 0;
@@ -27,6 +27,7 @@ If one of the counts reaches five, the game is over and scores are reset
 */
 function getPlayerChoice(buttonChoice) {
     playerChoice = buttonChoice;
+    gameOver.innerHTML = '';
     game();
     getCompChoice();
 }
@@ -91,7 +92,7 @@ function compareChoices(pc, cc) {
             showPlayerChoice.innerHTML = 'Scissors';
             showCompChoice.innerHTML = 'Scissors';
         }
-    } //eventually update this so score on screen is updated.
+    }
 }
 
 function game() {
@@ -101,6 +102,10 @@ function game() {
     
     if(playerWinCount == 5) {
         gameOver.innerHTML = 'You won!'
+        playerWinCount = 0;
+        compWinCount = 0;
+    } else if(compWinCount == 5 && playerWinCount < 2) {
+        gameOver.innerHTML = 'Absolutely wrecked'
         playerWinCount = 0;
         compWinCount = 0;
     } else if(compWinCount == 5) {

@@ -3,6 +3,12 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="page">
@@ -13,16 +19,16 @@
     <div id="game-panel">
         <h3>Make your choice</h3>
         <div class="user-choice">
-        <button id="rock" onclick="getPlayerChoice('Rock')">Rock</button>
-        <button id="paper" onclick="getPlayerChoice('Paper')">Paper</button>
-        <button id="scissors" onclick="getPlayerChoice('Scissors')">Scissors</button>
+        <input type="image" src="rock.png" id="rock" onclick="getPlayerChoice('Rock')">
+        <input type="image" src="paper.png" id="paper" onclick="getPlayerChoice('Paper')">
+        <input type="image" src="scissors.png" id="scissors" onclick="getPlayerChoice('Scissors')">
         </div>
     </div>
     <div id="results">
-        <table>
+        <table id="game-results">
             <thead>
-                <th>Your Choice</th>
-                <th>Computer Choice</th>
+                <th id="ur-c">Your Choice</th>
+                <th id="c-c">Comp Choice</th>
             </thead>
             <tbody>
                 <tr>
@@ -30,13 +36,17 @@
                 <th id="showCompChoice"></th>
                 </tr>
                 <tr>
+                    <th id="pScoreText">Your Score</th>
+                    <th id="cScoreText">Comp Score</th>
+                </tr>
+                <tr>
                 <th id="showPlayerScore"></th>
                 <th id="showCompScore"></th>
                 </tr>
             </tbody>
         </table>
-    <div>
-        <h2 id="game-over"></h2>
+    <div id="game-over">
+        <h2 id="game-over-text"></h2>
     </div>
     </div>
     <div id="footer">
